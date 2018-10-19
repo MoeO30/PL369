@@ -9,7 +9,7 @@ export class SidebarService {
       titulo: 'Administrador',
       icono: 'fa fa-database',
       submenu: [
-        { titulo: 'Usuarios'},
+        { titulo: 'Usuarios', url: '/altausuario'},
         { titulo: 'Mapas' },
         { titulo: 'Base de datos' }
       ]
@@ -54,7 +54,7 @@ export class SidebarService {
         {titulo: 'Mapas'},
         {titulo: 'Cambios-Movimientos'},
         {titulo: 'Nueva Unidad Operativa' },
-        {titulo: 'Apertura de Sede' ,
+        {titulo: 'Apertura de Sede' },
       ]
     },
     {
@@ -109,8 +109,26 @@ export class SidebarService {
         {titulo: 'Viaticos'},
         {titulo: 'Visor de Solicitudes'},
       ]
+    },
+    {
+    titulo: 'Solicitar',
+    icono: 'fa fa-exclamation'
     }
   ];
 
+  menuHeader: any = [
+  {
+    Label: 'SOLICITAR',
+    menus: [
+      {titulo: 'Solicitud de Recursos'},
+      {titulo: 'Viaticos'},
+      {titulo: 'Solicitar Cambio de Micro'},
+      {titulo: 'Solicitar Nueva UO'},
+      {titulo: 'Solicitar Apertura de Cede'}
+    ]
+
+  }
+
+  ];
   constructor() {}
 }

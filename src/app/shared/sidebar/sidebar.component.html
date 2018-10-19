@@ -38,10 +38,11 @@
                 </a>
                 <ul class="treeview-menu">
                     <li *ngFor="let submenu of menu.submenu">
-                        <a href="../../index.html"><i class="fa fa-circle-o"></i> {{submenu.titulo}}</a></li>
+                        <a [routerLink]="[submenu.url]" routerLinkActive="active"><i class="fa fa-circle-o"></i> {{submenu.titulo}}</a></li>
 
                 </ul>
             </li>
+
 
         </ul>
     </section>

@@ -4,7 +4,8 @@ import { SharedModule } from '../shared/shared.module';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PAGES_ROUTES } from './pages.routes';
-import { UsuariosComponent } from './usuarios/usuarios.component';
+import { ProfileComponent } from './usuarios/profile/profile.component';
+import { AltausuarioComponent } from './usuarios/altausuario/altausuario.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
   declarations: [
     PagesComponent,
     DashboardComponent,
-    UsuariosComponent
+    ProfileComponent,
+    AltausuarioComponent
   ]
 })
 export class PagesModule { }

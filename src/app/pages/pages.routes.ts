@@ -1,17 +1,21 @@
 import { RouterModule, Routes } from '@angular/router';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
+import { AltausuarioComponent } from './usuarios/altausuario/altausuario.component';
+
 
 
 const pagesRoutes: Routes = [
-    { path: '', component: PagesComponent,
+  {
+    path: '',
+    component: PagesComponent,
     children: [
-    { path: 'dashboard', component: DashboardComponent},
-    { path: 'usuarios', component: UsuariosComponent },
-    { path: '', pathMatch: 'full', redirectTo: '/dashboard' }
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'altausuario', component: AltausuarioComponent },
+
+      { path: '', pathMatch: 'full', redirectTo: '/dashboard' }
     ]
-},
+  }
 ];
 
 export const PAGES_ROUTES = RouterModule.forChild(pagesRoutes);
