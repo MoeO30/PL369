@@ -7,7 +7,7 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="src/assets/dist/img/avatarOfice.png" class="img-circle" alt="User Image">
+                <img [src]="usuario.avatarlogin" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
                 <p>Edgar Carrillo Moreno</p>
@@ -38,7 +38,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li *ngFor="let submenu of menu.submenu">
-                        <a [routerLink]="[submenu.url]" routerLinkActive="active"><i class="fa fa-circle-o"></i> {{submenu.titulo}}</a></li>
+                        <a [routerLink]="[submenu.url]" routerLinkActive="active"><i class="fa fa-circle-o text-aqua"></i> {{submenu.titulo}}</a></li>
 
                 </ul>
             </li>

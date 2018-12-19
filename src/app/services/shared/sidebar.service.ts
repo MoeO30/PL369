@@ -10,15 +10,15 @@ export class SidebarService {
       icono: 'fa fa-database',
       submenu: [
         { titulo: 'Usuarios', url: '/altausuario'},
-        { titulo: 'Mapas' },
-        { titulo: 'Base de datos' }
+        { titulo: 'Mapas', url: '/mapas'},
+        { titulo: 'Base de datos', url: '/database' }
       ]
     },
     {
       titulo: 'Meta-Logro',
       icono: 'fa fa-bar-chart',
       submenu: [
-        {titulo: 'Programa Regular', url: '/ProgramaR'},
+        {titulo: 'Programa Regular', url: '/metas'},
         {titulo: 'PEC', url: 'PEC'},
         {titulo: 'Programas', url: '/programa'}
       ]

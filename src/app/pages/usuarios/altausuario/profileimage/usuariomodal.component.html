@@ -1,0 +1,40 @@
+<div class="modal modal-warning fade" id="EliminarUsModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">ELIMINAR</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Esta seguro de eliminar a: {{usuario.nombreus}} {{usuario.ap_pat}} {{usuario.ap_mat}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-outline" (click)="eliminarUs()" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal modal-info fade" id="resetpassUsModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">RESET PASSWORD</h4>
+            </div>
+            <div class="modal-body">
+                <p>SE RESTABLECIO LA CONTRASEÑA EXITOSAMENTE</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

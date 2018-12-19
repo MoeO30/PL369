@@ -1,0 +1,95 @@
+<div class="col-md-3 animated fade fadeIn">
+
+    <!-- Profile Image -->
+    <div class="box box-primary">
+        <div class="box-body box-profile">
+            <img class="profile-user-img img-responsive img-circle" [src]="usuario.avatar" alt="User profile picture">
+
+            <h2 class="profile-username text-center">{{usuario.nombreus}} {{usuario.ap_pat}} {{usuario.ap_mat}}</h2>
+            <!-- <h1 class="profile-username text-center">Edgar Carrillo Moreno</h1> -->
+
+            <p class="text-muted text-center">{{usuario.nivel}}</p>
+
+
+            <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                    <b>{{usuario.asignacion_CZ}}</b> <a #ProfileImageUs name="#ProfileImageUs" class="pull-right">{{usuario.czus}}</a>
+                </li>
+                <li class="list-group-item">
+                    <b>{{usuario.departamento_MR}} </b> <a #ProfileImageMr class="pull-right">{{usuario.mrus}}</a>
+                </li>
+                <li class="list-group-item">
+                    <b>Estado</b> <a #ProfileImageStatus class="pull-right">{{usuario.status}}</a>
+                </li>
+            </ul>
+
+            <div class="btn-group alignBtnLeft">
+                <button type="button" class="btn btn-info alignBtnLeft" (click)="editarUsuario()"><i class="fa fa-pencil"></i>Editar</button>
+                <button [disabled]="!usuario.btnEliminar" type="button" class="btn btn-info" (click)="eliminarUsModal()"><i class="fa fa-close" ></i>Eliminar</button>
+                <button type="button" class="btn btn-info alignBtnRight" (click)="ResetPassword()"><i class="fa fa-refresh"></i>Contraseña</button>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-user-circle"></i>Estado</button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a (click)="updateStatus('Activo')">Activo</a></li>
+                        <li><a (click)="updateStatus('Inactivo')">Inactivo</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+
+
+
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Usuarios</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <strong><i class="fa fa-users margin-r-5"></i>Total de Usuarios</strong>
+
+            <p class="text-muted">
+                {{usuario.countTotal}}
+            </p>
+
+            <hr>
+
+            <strong><i class="fa fa-map-marker margin-r-5"></i>sesiones activas</strong>
+
+            <p class="text-muted">{{usuario.countSesiones}} sesiones</p>
+            <p class="text-muted" (click)="verSesiones()"><span class="label label-success pointerlink">ver...</span></p>
+
+            <hr>
+
+            <strong><i class="fa fa-pencil margin-r-5"></i>Niveles</strong>
+
+            <p>Administrador: <span class="label label-danger">{{usuario.countAdmin}}</span></p>
+            <p>Tecnicos docentes:<span class="label label-success">{{usuario.countTD}}</span></p>
+            <p>Jefes de Departamento:<span class="label label-info">{{usuario.countJD}}</span></p>
+            <p>Enlase Regional:<span class="label label-warning">{{usuario.countER}}</span></p>
+            <p>Delegación: <span class="label label-primary">{{usuario.countDel}}</span></p>
+            <p>Cordinador de Zona: <span class="label label-primary">{{usuario.countCZ}}</span></p>
+            <hr>
+
+            <strong><i class="fa fa-file-text-o margin-r-5"></i>Base de Datos</strong>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-1 ">
+                        <p><button class="btn btn-warning" (click)="IrimportarUs()">Importar</button></p>
+                    </div>
+                    <div class="col-md-1">
+                        <p><button class="btn btn-success">Exportar</button></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.box-body -->
+    </div>
+
+
+
+</div>

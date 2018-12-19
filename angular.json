@@ -27,7 +27,15 @@
                             "src/assets/bower_components/bootstrap/dist/css/bootstrap.min.css",
                             "src/assets/bower_components/font-awesome/css/font-awesome.min.css",
                             "src/assets/bower_components/Ionicons/css/ionicons.min.css",
-                            "src/assets/dist/css/AdminLTE.min.css",
+                            "src/assets/dist/css/AdminLTE.css",
+                            "src/assets/DataTables/Responsive-2.2.2/css/responsive.dataTables.css",
+                            "src/assets/DataTables/datatables.min.css",
+
+
+                            "src/assets/fileup/css/fileinput.css",
+                            "src/assets/fileup/themes/explorer-fas/theme.css",
+
+
                             "src/assets/dist/css/skins/_all-skins.min.css"
                         ],
                         "scripts": [
@@ -36,15 +44,18 @@
                             "src/assets/bower_components/bootstrap/dist/js/bootstrap.min.js",
                             "src/assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js",
                             "src/assets/bower_components/fastclick/lib/fastclick.js",
-                            "src/assets/bower_components/datatables.net/js/jquery.dataTables.min.js",
-                            "src/assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js",
+                            "src/assets/DataTables/datatables.min.js",
+                            "src/assets/DataTables/Responsive-2.2.2/js/dataTables.responsive.js",
                             "src/assets/dist/js/adminlte.js",
                             "src/assets/dist/js/demo.js",
 
+                            "src/assets/fileup/js/bootstrap-filestyle.min.js",
+                            "src/assets/fileup/js/fileinput.js",
+                            "src/assets/fileup/js/locales/es.js",
 
-                            "src/assets/login/js/jquery.backstretch.min.js",
-                            "src/assets/login/js/scripts.js"
+                            "src/assets/login/js/scripts.js",
 
+                            "src/assets/login/js/jquery.backstretch.min.js"
                         ]
                     },
                     "configurations": {

@@ -1,0 +1,57 @@
+<div class="col-md-3 animated fade fadeIn">
+    <div class="box box-primary">
+        <div class="box-body box-profile">
+            <img class="profile-user-img img-responsive img-circle" [src]="avatar" alt="User profile picture">
+            <h2 class="profile-username text-center">{{nombres}}</h2>
+            <p class="text-muted text-center">{{puesto}}</p>
+            <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+
+                    <b>Coordinación</b>
+                    <!-- <a #ProfileImageUs name="#ProfileImageUs" class="pull-right">usuario.czus</a> -->
+                    <p class="select_czmr pull-right">
+                        <select id="leadType" name="lead_typ" id="asigcz" #asigcz (change)="enviarcz(asigcz.value)">
+                      <option *ngFor="let cz of asig_cz" value="{{cz.asigcz}}">{{cz.asigcz}}</option>
+                      </select>
+                    </p>
+
+                </li>
+                <li class="list-group-item">
+
+                    <b>Microregión</b>
+                    <!-- <a #ProfileImageMr class="pull-right">usuario.mrus</a> -->
+                    <p class="select_czmr pull-right">
+                        <select id="leadType" id="asigmr" #asigmr (change)="enviarmr()" name="lead_typ">
+                    <option *ngFor="let mr of asig_mr" value="{{mr.mr}}">{{mr.mr}}</option>
+                    </select>
+                    </p>
+
+                </li>
+                <li class="list-group-item">
+                    <b>Año</b>
+                    <!-- <a #ProfileImageStatus class="pull-right">usuario.status</a> -->
+                    <p class="select_czmr pull-right">
+                        <select id="year" name="year">
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                        </select>
+                    </p>
+                </li>
+            </ul>
+            <button type="button" (click)="cargarcz()" class="btn btn-block btn-primary btn-xs">Logro Didiembre 2018</button>
+            <button type="button" class="btn btn-block btn-primary btn-xs">Logro Enero-Diciembre 2018</button>
+            <button type="button" class="btn btn-block btn-primary btn-xs">Logro Corrdinacion de zona {{cz}}</button>
+            <button type="button" class="btn btn-block btn-primary btn-xs">Logro Estatal</button>
+            <div class="btn-group btn-block">
+                <button type="button" class="btn btn-block btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Trimestral</button>
+                <ul class="dropdown-menu btn-block" role="menu">
+                    <li><a>Primer Trimestre</a></li>
+                    <li><a>Segundo Trimenstre</a></li>
+                    <li><a>Tercer Trimestre</a></li>
+                    <li><a>Cuarto Trimestre</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

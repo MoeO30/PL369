@@ -1,0 +1,287 @@
+<div class="col-md-9 animated fast fadeIn">
+    <div class="nav-tabs-custom" id="tabsUS">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#Buscar" data-toggle="tab">Buscar</a></li>
+            <li><a href="#AltaEditar" data-toggle="tab">Alta-Editar</a></li>
+            <li><a href="#Sesiones" data-toggle="tab">Sesiones</a></li>
+
+        </ul>
+        <div class="tab-content">
+            <div class="active tab-pane animated fast fadeIn" id="Buscar">
+                <!-- Post buscar -->
+                <!-- /.box -->
+                <section class="content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Usuarios Registrados</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+
+                                    <!-- <app-tbusuario></app-tbusuario> -->
+                                    <table #TUsuarios class="table table-striped table-bordered table-sm row-border hover " id="TUsuarios" datatable [dtOptions]="dtOptions[0]" [dtTrigger]="dtTrigger" style="width:100%;">
+
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>RFC</th>
+                                                <th>CZ</th>
+                                                <th>MR</th>
+                                                <th>NOMBRES</th>
+                                                <th>PUESTO</th>
+                                                <th>STATUS</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let usuario of usuarios$">
+                                                <td><a>{{usuario.id}}</a> </td>
+                                                <td><a (click)='CargarUsuario(usuario.id)'>{{usuario.rfc | uppercase}}</a> </td>
+                                                <td>{{usuario.cz | uppercase}}
+                                                </td>
+                                                <td>{{usuario.mr}}</td>
+                                                <td> {{usuario.nombres | uppercase}} {{usuario.apepaterno | uppercase}} {{usuario.apematerno | uppercase}}</td>
+                                                <td>{{usuario.puesto | uppercase}}</td>
+                                                <td>{{usuario.status | uppercase}}</td>
+                                            </tr>
+
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>RFC</th>
+                                                <th>CZ</th>
+                                                <th>MR</th>
+                                                <th>NOMBRES</th>
+                                                <th>PUESTO</th>
+                                                <th>STATUS</th>
+
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- /.box -->
+            </div>
+            <!-- /.tab-pane buscar -->
+            <div class="tab-pane animated fast fadeIn" id="AltaEditar">
+                <form [formGroup]="registerForm" class="form-horizontal" (ngSubmit)="onSubmit()">
+
+                    <div class="form-group">
+                        <label for="inputSkills" class="col-sm-2 control-label">Usuario</label>
+
+                        <div class="col-sm-10" [ngClass]="{'form-group has-error formInput': submitted && f.usuarioForm.errors}">
+                            <input type="text" class="form-control txtuppercase" formControlName="usuarioForm" [(ngModel)]="model.usuario" name="usuarioForm" placeholder="Usuario">
+
+                            <div *ngIf="submitted && f.usuarioForm.errors">
+                                <span *ngIf="submitted && f.usuarioForm.errors.required" class="help-block formInput">se requiere nombre de usuario</span>
+                                <span *ngIf="submitted && f.usuarioForm.errors.minlength" class="help-block formInput">se requiere al menos 6 caracteres</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputSkills" class="col-sm-2 control-label ">Contraseña</label>
+
+
+                        <div class="col-sm-10" [ngClass]="{'form-group has-error': submitted && f.passForm.errors}">
+                            <input type="password" class="form-control " formControlName="passForm" [(ngModel)]="model.password" id="passForm" name="passForm" placeholder="Contraseña inicial es el RFC" disabled required>
+
+                            <div *ngIf="submitted && f.passForm.errors">
+                                <span *ngIf="submitted && f.passForm.errors.required" class="help-block">se requiere password</span>
+                                <span *ngIf="submitted && f.passForm.errors.minlength" class="help-block">se requiere al menos 6 caracteres</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputSkills " class="col-sm-2 control-label ">Nivel</label>
+
+                        <div class="col-sm-10" [ngClass]="{'form-group has-error': submitted && f.nivelForm.errors}">
+                            <select class="form-control select2 select2-hidden-accessible " [(ngModel)]="model.nivel " formControlName="nivelForm" name="nivelForm" style="width: 100%; " tabindex="-1 " aria-hidden="true ">
+                            <option *ngFor="let Opnivel of niveles " value="{{Opnivel.Nivel | uppercase}} ">{{Opnivel.Nivel | uppercase}}</option>
+                            
+                        </select>
+                            <div *ngIf="submitted && f.nivelForm.errors">
+                                <span *ngIf="submitted && f.nivelForm.errors.required" class="help-block">se requiere Nivel</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName " class="col-sm-2 control-label ">Nombres</label>
+
+                        <div class="col-sm-10" [ngClass]="{'form-group has-error': submitted && f.nombresForm.errors}">
+                            <input type="text" class="form-control txtuppercase" formControlName="nombresForm" [(ngModel)]="model.nombres " name="nombresForm" id="inputNombres " placeholder="Nombres ">
+                            <div *ngIf="submitted && f.nombresForm.errors">
+                                <span *ngIf="submitted && f.nombresForm.errors.required" class="help-block">se requiere Nombre</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail " class="col-sm-2 control-label">Apellido Paterno</label>
+
+                        <div class="col-sm-10" [ngClass]="{'form-group has-error': submitted && f.paternoForm.errors}">
+                            <input type="email " class="form-control txtuppercase" formControlName="paternoForm" [(ngModel)]="model.apepaterno " name="paternoForm" id="inputApePat " placeholder="Apellido Paterno ">
+                            <div *ngIf="submitted && f.paternoForm.errors">
+                                <span *ngIf="submitted && f.paternoForm.errors.required" class="help-block">se requiere Apellido Paterno</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label ">Apellido Materno</label>
+
+                        <div class="col-sm-10" [ngClass]="{'form-group has-error': submitted && f.paternoForm.errors}">
+                            <input type="text" class="form-control txtuppercase" formControlName="maternoForm" [(ngModel)]="model.apematerno " name="maternoForm" id="inputApeMat " placeholder="Apellido Materno ">
+                            <div *ngIf="submitted && f.maternoForm.errors">
+                                <span *ngIf="submitted && f.maternoForm.errors.required" class="help-block">se requiere Apellido Materno</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="inputName " class="col-sm-2 control-label ">RFC</label>
+
+                        <div class="col-sm-10 " [ngClass]="{'form-group has-error': submitted && f.rfcForm.errors}">
+                            <input type="text " class="form-control txtuppercase" formControlName="rfcForm" #rfc (keyup)="rfcpass(rfc.value)" [(ngModel)]="model.rfc " name="rfcForm" placeholder="RFC">
+                            <div *ngIf="submitted && f.rfcForm.errors">
+                                <span *ngIf="submitted && f.rfcForm.errors.required" class="help-block">se requiere RFC</span>
+                                <span *ngIf="submitted && f.rfcForm.errors.minlength" class="help-block">se requiere al menos 10 caracteres</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="inputName " class="col-sm-2 control-label">CURP</label>
+
+                        <div class="col-sm-10 " [ngClass]="{'form-group has-error': submitted && f.curpForm.errors}">
+                            <input type="text " class="form-control txtuppercase" formControlName="curpForm" [(ngModel)]="model.curp " name="curpForm" id="curp " placeholder="CURP">
+                            <div *ngIf="submitted && f.curpForm.errors">
+                                <span *ngIf="submitted && f.curpForm.errors.required" class="help-block">se requiere CURP</span>
+                                <span *ngIf="submitted && f.curpForm.errors.minlength" class="help-block">se requiere 18 caracteres</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="inputSkills " class="col-sm-2 control-label">Puesto</label>
+                        <div class="col-sm-10 " [ngClass]="{'form-group has-error': submitted && f.puestoForm.errors}">
+                            <select class="form-control select2 select2-hidden-accessible " formControlName="puestoForm" [(ngModel)]="model.puesto" #puesto (change)="EnviarPuesto(puesto.value)" name="puestoForm" id="inputPuesto " style="width: 100%; " tabindex="-1
+                                " aria-hidden="true " required>
+                                <option *ngFor="let OPpuesto of puestos "  value="{{OPpuesto.puesto}}" >{{OPpuesto.puesto | uppercase}}</option>
+                            </select>
+                            <div *ngIf="submitted && f.puestoForm.errors">
+                                <span *ngIf="submitted && f.puestoForm.errors.required" class="help-block">se requiere Puesto</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="inputSkills " class="col-sm-2 control-label ">Asignacion/CZ</label>
+
+                        <div class="col-sm-10 " [ngClass]="{'form-group has-error': submitted && f.asignacionForm.errors}">
+                            <select class="form-control select2 select2-hidden-accessible " formControlName="asignacionForm" [(ngModel)]="model.cz" name="asignacionForm" #asigcz (change)="EnviarCZ(asigcz.value) " id="inputAsigCZ" style="width: 100%; " tabindex="-1 " aria-hidden="true ">
+                                <option *ngFor="let OPAsig of asig_cz"  value="{{OPAsig.asigcz}}" >{{OPAsig.asigcz}}</option>
+                            </select>
+                            <div *ngIf="submitted && f.asignacionForm.errors">
+                                <span *ngIf="submitted && f.asignacionForm.errors.required" class="help-block">se requiere Asignacion/CZ</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="inputSkills " class="col-sm-2 control-label ">Departamento/MR</label>
+
+                        <div class="col-sm-10 " [ngClass]="{'form-group has-error': submitted && f.departamentoForm.errors}">
+                            <select class="form-control select2 select2-hidden-accessible " formControlName="departamentoForm" [(ngModel)]="model.mr" name="mr" #depmr id="departamentoForm" style="width: 100%; " tabindex="-1 " aria-hidden="true ">
+                                <option *ngFor="let OPDepMR of dep_mr " value="{{OPDepMR.mr}}">{{OPDepMR.mr}}</option>
+                            </select>
+                            <div *ngIf="submitted && f.departamentoForm.errors">
+                                <span *ngIf="submitted && f.departamentoForm.errors.required" class="help-block">se requiere Departamento/MR</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <label for="inputSkills " class="col-sm-2 control-label ">Avatar</label>
+
+                        <div class="col-sm-10 " [ngClass]="{'form-group has-error': submitted && f.avatarForm.errors}">
+                            <select class="form-control select2 select2-hidden-accessible " formControlName="avatarForm" [(ngModel)]="model.avatar" name="avatar" #depmr id="avatarForm" style="width: 100%; " tabindex="-1 " aria-hidden="true ">
+                                <option value="AvatarF.png">AvatarF.png</option>
+                                <option value="AvatarM.png">AvatarM.png</option>
+                            </select>
+
+                            <div *ngIf="submitted && f.avatarForm.errors">
+                                <span *ngIf="submitted && f.avatarForm.errors.required" class="help-block">se requiere Imagen</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <div class="col-sm-offset-2 col-sm-10 ">
+                            <div class="checkbox" [ngClass]="{'form-group has-error': submitted && f.terminosForm.errors}">
+                                <label>
+                         <input type="checkbox" formControlName="terminosForm" name="terminosForm"> Acepto las condiciones <a href="# "></a>
+                        <div *ngIf="submitted && f.terminosForm.errors">
+                            <span *ngIf="submitted && f.terminosForm.errors.required" class="help-block">se requiere aceptar los terminos</span>
+                        </div>
+                        </label>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group ">
+                        <div class="col-sm-offset-2 col-sm-10 ">
+                            <button type="submit " class="btn btn-danger ">Guardar</button>
+                            <button type="button" (click)="cancelarFormUs()" class="btn btn-warning btnleft">Canelar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.tab-pane -->
+            <!-- /.tab-pane -->
+            <div class="tab-pane animated fast fadeIn" id="Sesiones">
+                <!-- The timeline -->
+                <div class="box-body">
+                    <table #TUsuariosSes class="table table-striped table-bordered table-sm row-border hover " id="TUsuariosSes" datatable [dtOptions]="dtOptions[1]" [dtTrigger]="dtTrigger" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th>NOMBRES</th>
+                                <th>ULTIMA SESION</th>
+                                <th>SESIONES</th>
+                                <th>DESCARGAS</th>
+                                <th>SESION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let sesiones of usuarios$">
+                                <td> {{sesiones.nombres | uppercase}} {{sesiones.apepaterno | uppercase}} {{sesiones.apematerno | uppercase}}
+                                </td>
+                                <td>{{sesiones.ultima_sesion}}</td>
+                                <td>{{sesiones.sesiones}}</td>
+                                <td>{{sesiones.descargas}}</td>
+                                <td>{{sesiones.status_ses}}</td>
+                            </tr>
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>NOMBRES</th>
+                                <th>ULTIMA SESION</th>
+                                <th>SESIONES</th>
+                                <th>DESCARGAS</th>
+                                <th>SESION</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.tab-content -->
+    </div>
+    <!-- /.nav-tabs-custom -->

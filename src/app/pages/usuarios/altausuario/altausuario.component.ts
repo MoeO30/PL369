@@ -1,9 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { PagesService } from 'src/app/services/service.index';
-
-declare var jQuery: any;
-declare var $: any;
-
+import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-altausuario',
@@ -12,22 +7,9 @@ declare var $: any;
 })
 export class AltausuarioComponent implements OnInit {
 
-  constructor(private select_us: PagesService) {
-  this.select_us.sel_usuarios();
-   }
+  constructor() {}
 
-  ngOnInit() {
-      $(function() {
-        $('#example1').DataTable();
-        $('#example2').DataTable({
-          paging: true,
-          lengthChange: false,
-          searching: false,
-          ordering: true,
-          info: true,
-          autoWidth: false
-        });
-      });
-  }
+  ngOnInit() {}
+
 
 }

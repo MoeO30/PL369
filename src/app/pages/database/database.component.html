@@ -1,0 +1,59 @@
+<div *ngFor="let menu of data.MenuDataBase">
+    <h5>{{menu.modulo}}</h5>
+    <hr class="colorHR">
+    <div class="row">
+        <div class="col-md-3 animated fade fadeIn" *ngFor="let submenu of menu.submenu">
+            <div [ngClass]="submenu.class" id="{{submenu.titulo}}">
+                <!-- <div [ngClass]="(data.collapsed)? submenu.class : submenu.class" id="{{submenu.titulo}}"> -->
+                <div class="box-header with-border">
+                    <h6 class="box-title">{{submenu.titulo}}</h6>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" (click)="contraer(submenu.titulo,submenu.namecollapsed,submenu.btncollapsed,submenu.x,submenu.y)"><i id="{{submenu.namecollapsed}}" class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body animated fade fadeIn">
+                    <strong><i class="fa fa-book margin-r-5"></i>Subir Archivo CSV</strong>
+
+                    <form role="form" class="AVAST_PAM_loginform">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <form enctype="multipart/form-data">
+                                    <div class="file-loading">
+                                        <input id="{{submenu.id_file}}" name="{{submenu.file}}" (keyup)="convertcsv($event.target.files, submenu.id_file, submenu.textfile)" (change)="convertcsv($event.target.files, submenu.id_file, submenu.textfile)" type="file" multiple>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </form>
+
+                    <hr>
+
+                    <strong><i class="fa fa-file-text-o margin-r-5 "></i>JSON</strong>
+                    <p class="text-muted ">{{submenu.msg_proceso}}</p>
+                    <div class="progress progress-xs active">
+                        <div class="progress-bar progress-bar-striped" id="{{submenu.progressName}}" [ngClass]="submenu.progressClass" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                            <span class="sr-only">60% Completado</span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group ">
+                        <textarea class="form-control" rows="3 " id="{{submenu.textfile}}" placeholder="cargar JSON ..." style="margin: 0px 9.5px 0px 0px; height: 191px; "></textarea>
+                    </div>
+
+                    <div class="box-footer ">
+                        <button type="submit " [ngClass]="submenu.btn" [disabled]="!btnUpJson" (click)="clearTextUsJSON(submenu.textfile,submenu.page,submenu.progressName, submenu.x, submenu.y)">Importar
+                            Base
+                            de Datos</button>
+                    </div>
+                    <hr>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+    </div>
+</div>
