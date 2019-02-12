@@ -82,10 +82,71 @@
     border: 1px solid #E5E5E5;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 0 10px #E8E8E8 inset;
-    height: 30px;
+    height: 20px;
     margin: 0 0 0 0px;
-    margin-top: -10px;
+    margin-top: -1px;
     padding-bottom: 10px;
     padding: 0px;
     width: 55px;
+    float: right;
+}
+
+.list-group-item-inea {
+    position: relative;
+    display: block;
+    padding: 1px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd
+}
+
+.list-group-item-inea2 {
+    position: relative;
+    display: block;
+    padding: 4px 10px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd
+}
+
+
+/* .dataTables tbody tr {
+    height: 10px;
+    /* or whatever height you need to make them all consistent */
+
+
+/* } */
+
+.trclass {
+    height: 8px;
+    font-weight: bold;
+}
+
+
+/* .table thead tr th {
+    vertical-align: top;
+    text-align: center;
+    background-color: rgb(218, 208, 208);
+} */
+
+#th1,
+#th2,
+#th3,
+#th4,
+#th5,
+#th6,
+#th7,
+#th8,
+#th9,
+#th10,
+#th11,
+#th12,
+#th13,
+#th14 {
+    vertical-align: middle;
+    text-align: center;
+    background-color: rgb(218, 208, 208);
+    border: white;
+    border-style: solid;
+    border-width: 1px;
 }

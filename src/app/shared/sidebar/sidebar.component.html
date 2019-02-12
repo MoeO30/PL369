@@ -26,10 +26,31 @@
         </form>
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
+
+
+        <ul class="sidebar-menu animated fade fadeIn" data-widget="tree" *ngFor="let menu of sidebar_menu | filterBy: sidebar.menuFilter">
+            <li class="header" *ngIf="menu.titulo">{{menu.titulo}}</li>
+            <li class="treeview pointerlink">
+                <a (click)="cambioSideBar(menu.ruta)">
+                    <i [class]="menu.icono"></i> <span>{{menu.tituloMenu}}</span>
+                    <span class="pull-right-container" *ngIf="menu.sub">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu active">
+                    <li *ngFor="let submenu of menu.submenu">
+                        <a [routerLink]="submenu.url" routerLinkActive="active" (click)="cambioSideBar(submenu.ruta)"><i class="fa fa-circle-o text-aqua"></i>
+                            {{submenu.titulo}}</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- 
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">NAVEGACIÓN PRINCIPAL
             </li>
-            <li class="treeview" *ngFor="let menu of sidebar.menu">
+            <li [class]="menu.clase" *ngFor="let menu of sidebar_menu | filterBy: menuFilter">
+
                 <a href="#">
                     <i [class]="menu.icono"></i> <span>{{menu.titulo}}</span>
                     <span class="pull-right-container">
@@ -44,7 +65,8 @@
             </li>
 
 
-        </ul>
+        </ul> -->
+
     </section>
     <!-- /.sidebar -->
 </aside>

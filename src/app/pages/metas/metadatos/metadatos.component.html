@@ -2,35 +2,35 @@
     <div class="box box-primary">
         <div class="box-body box-profile">
             <img class="profile-user-img img-responsive img-circle" [src]="avatar" alt="User profile picture">
-            <h2 class="profile-username text-center">{{nombres}}</h2>
-            <p class="text-muted text-center">{{puesto}}</p>
+            <h2 class="profile-username text-center" style="font-size: 13px">{{nombres}}</h2>
+            <p class="text-muted text-center" style="font-size: 12px">{{puesto}}</p>
             <ul class="list-group list-group-unbordered">
-                <li class="list-group-item">
+                <li class="list-group-item-inea2">
 
                     <b>Coordinación</b>
                     <!-- <a #ProfileImageUs name="#ProfileImageUs" class="pull-right">usuario.czus</a> -->
                     <p class="select_czmr pull-right">
-                        <select id="leadType" name="lead_typ" id="asigcz" #asigcz (change)="enviarcz(asigcz.value)">
-                      <option *ngFor="let cz of asig_cz" value="{{cz.asigcz}}">{{cz.asigcz}}</option>
+                        <select id="leadType" style="font-size: 12px" name="lead_typ" id="asigcz" #asigcz (change)="enviarcz(asigcz.value)">
+                      <option *ngFor="let cz of asig_cz"  value="{{cz.asigcz}}">{{cz.asigcz}}</option>
                       </select>
                     </p>
 
                 </li>
-                <li class="list-group-item">
+                <li class="list-group-item-inea2">
 
                     <b>Microregión</b>
                     <!-- <a #ProfileImageMr class="pull-right">usuario.mrus</a> -->
                     <p class="select_czmr pull-right">
-                        <select id="leadType" id="asigmr" #asigmr (change)="enviarmr()" name="lead_typ">
-                    <option *ngFor="let mr of asig_mr" value="{{mr.mr}}">{{mr.mr}}</option>
-                    </select>
+                        <select id="leadType" style="font-size: 12px" id="asigmr" #asigmr (change)="enviarmr()" name="lead_typ">       
+                    <option *ngFor="let mr of getItems()" value="{{mr.mr}}">{{mr.mr}}</option>
+                        </select>
                     </p>
 
                 </li>
-                <li class="list-group-item">
+                <li class="list-group-item-inea2">
                     <b>Año</b>
                     <!-- <a #ProfileImageStatus class="pull-right">usuario.status</a> -->
-                    <p class="select_czmr pull-right">
+                    <p class="select_czmr pull-right" style="font-size: 12px" id="asigyear" #asigyear (change)="cargarMetaporMes()">
                         <select id="year" name="year">
                     <option value="2019">2019</option>
                     <option value="2018">2018</option>
@@ -39,19 +39,39 @@
                     </p>
                 </li>
             </ul>
-            <button type="button" (click)="cargarcz()" class="btn btn-block btn-primary btn-xs">Logro Didiembre 2018</button>
-            <button type="button" class="btn btn-block btn-primary btn-xs">Logro Enero-Diciembre 2018</button>
-            <button type="button" class="btn btn-block btn-primary btn-xs">Logro Corrdinacion de zona {{cz}}</button>
-            <button type="button" class="btn btn-block btn-primary btn-xs">Logro Estatal</button>
-            <div class="btn-group btn-block">
-                <button type="button" class="btn btn-block btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Trimestral</button>
-                <ul class="dropdown-menu btn-block" role="menu">
-                    <li><a>Primer Trimestre</a></li>
-                    <li><a>Segundo Trimenstre</a></li>
-                    <li><a>Tercer Trimestre</a></li>
-                    <li><a>Cuarto Trimestre</a></li>
-                </ul>
-            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title" style="font-size:13px" id="TituloPanel">Metas y Logros a {{mesNom | capitalizado}}</h3>
+        </div>
+        <div class="box-body box-profile" *ngFor="let datos of ucnsMR">
+            <strong><i class="fa fa-book margin-r-3" style="font-size: 10px"></i>{{ datos.nivel }}</strong>
+
+            <ul class="list-group">
+                <li class="list-group-item-inea">
+                    <i style="font-size: 12px">Meta Anual</i> <a id="alfa1" class="pull-right" style="font-size:12px">{{datos.metaanual}}</a>
+                </li>
+                <li class="list-group-item-inea">
+                    <i style="font-size: 12px" id="M_label_alfa">Meta {{datos.RangoMes}}</i> <a id="alfa2" class="pull-right" style="font-size:12px">{{datos.totalMeta}}</a>
+                </li>
+                <li class="list-group-item-inea">
+                    <i style="font-size: 12px">Logro</i> <a class="pull-right" style="font-size:12px" id="alfa3">{{datos.totalLogro}}</a>
+                </li>
+                <li class="list-group-item-inea">
+                    <i style="font-size: 12px">% Anual</i> <a class="pull-right" style="font-size:12px" id="alfa4">{{datos.PGAnual}}%</a>
+                </li>
+                <li class="list-group-item-inea">
+                    <i style="font-size: 12px" id="P_label_alfa">%{{datos.RangoMes}}</i> <a class="pull-right" style="font-size:12px" id="alfa5">{{datos.PGMes}}%</a>
+                </li>
+
+            </ul>
+
         </div>
     </div>
 </div>

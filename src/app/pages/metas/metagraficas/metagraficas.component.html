@@ -1,18 +1,168 @@
 <div class="col-md-9 animated fast fadeIn">
-    <div class="nav-tabs-custom" id="tabsUS">
+
+    <div class="nav-tabs-custom" id="TabTable">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab1" data-toggle="tab">Tab1 </a></li>
-            <li><a href="#tab2" data-toggle="tab">Tab2 </a></li>
-            <li><a href="#tab3" data-toggle="tab">Tab3</a></li>
+            <li class="active"><a href="#Meta" data-toggle="tab">Meta</a></li>
+            <li><a href="#Logro" data-toggle="tab">Logro</a></li>
+            <li><a href="#Comparativo" data-toggle="tab">Comparativo</a></li>
         </ul>
         <div class="tab-content">
-            <div class="active tab-pane animated fast fadeIn" id="Tab1">
-                <fusioncharts width="700" height="400" type="Column2d" [dataSource]="dataSource">
-                </fusioncharts>
+            <div class="active tab-pane animated fast fadeIn" id="Meta">
+                <table #TableTDMetas class="table table-striped table-bordered nowrap " id="TableTDMetas" datatable [dtOptions]="dtOptions[0]" [dtTrigger]="dtTriggerMeta" style="width:100%;">
 
+                    <thead>
+                        <tr>
+                            <th>MES</th>
+                            <th>ALFABETIZACION</th>
+                            <th>INICIAL</th>
+                            <th>INTERMEDIO</th>
+                            <th>AVANZADO</th>
+                            <th>TOTAL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let meta of metaMes" class="animated fade fadeIn">
+                            <td style="font-size: 11px;" class="trclass" class>{{meta.mes | uppercase}}</td>
+                            <td style="font-size: 11px;" class="trclass">{{meta.alfa}}</td>
+                            <td style="font-size: 11px;" class="trclass">{{meta.inicial}}</td>
+                            <td style="font-size: 11px;" class="trclass">{{meta.intermedio}} </td>
+                            <td style="font-size: 11px;" class="trclass">{{meta.avanzado}} </td>
+                            <td style="font-size: 11px;" class="trclass">{{meta.total}} </td>
+                        </tr>
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>TOTAL</th>
+                            <th>{{TAlfas}}</th>
+                            <th>{{TInicial}}</th>
+                            <th>{{TIntermedio}}</th>
+                            <th>{{TAvanzado}}</th>
+                            <th>{{TAnual}}</th>
+
+                        </tr>
+                    </tfoot>
+                </table>
             </div>
-            <div class="active tab-pane animated fast fadeIn" id="Tab2"></div>
-            <div class="active tab-pane animated fast fadeIn" id="Tab3"></div>
+            <div class="tab-pane animated fast fadeIn" id="Logro">
+                <table #TableTDLogros class="table table-striped table-bordered nowrap " id="TableTDLogros" datatable [dtOptions]="dtOptions[1]" [dtTrigger]="dtTriggerLogro" style="width:100%;">
+
+                    <thead>
+                        <tr>
+                            <th>MES</th>
+                            <th>ALFABETIZACION</th>
+                            <th>INICIAL</th>
+                            <th>INTERMEDIO</th>
+                            <th>AVANZADO</th>
+                            <th>TOTAL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let logro of logroMes" class="animated fade fadeIn">
+                            <td style="font-size: 11px;" class="trclass" class>{{logro.mes | uppercase}}</td>
+                            <td style="font-size: 11px;" class="trclass">{{logro.alfa}}</td>
+                            <td style="font-size: 11px;" class="trclass">{{logro.inicial}}</td>
+                            <td style="font-size: 11px;" class="trclass">{{logro.intermedio}} </td>
+                            <td style="font-size: 11px;" class="trclass">{{logro.avanzado}} </td>
+                            <td style="font-size: 11px;" class="trclass">{{logro.total}} </td>
+                        </tr>
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>TOTAL</th>
+                            <th>{{TLAlfas}}</th>
+                            <th>{{TLInicial}}</th>
+                            <th>{{TLIntermedio}}</th>
+                            <th>{{TLAvanzado}}</th>
+                            <th>{{TLAnual}}</th>
+
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="tab-pane animated fast fadeIn" id="Comparativo">
+                <table #TableTDLogros class="table table-striped table-bordered table-sm row-border hover " id="TableTDLogros" datatable [dtOptions]="dtOptions[1]" [dtTrigger]="dtTriggerComparativo" style="width:100%;">
+
+                    <thead>
+                        <tr>
+                            <th rowspan="2" id="th1">MES</th>
+                            <th colspan="2" id="th3">ALFAS</th>
+                            <th colspan="2" id="th4">INICIAL</th>
+                            <th colspan="2" id="th5">INTERMEDIO</th>
+                            <th colspan="2" id="th6">AVANZADO</th>
+                            <!-- <th rowspan="2" id="th2">TOTAL</th> -->
+                        </tr>
+                        <tr>
+                            <th id="th7">META</th>
+                            <th id="th8">LOGRO</th>
+                            <th id="th9">META</th>
+                            <th id="th10">LOGRO</th>
+                            <th id="th11">META</th>
+                            <th id="th12">LOGRO</th>
+                            <th id="th13">META</th>
+                            <th id="th14">LOGRO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let metalogro of MetaLogroMes" class="animated fade fadeIn">
+                            <td style="font-size: 11px;" class="trclass" class>{{metalogro.mes | uppercase}}</td>
+                            <td style="font-size: 11px;" class="trclass">{{metalogro.MetaAlfa}}</td>
+                            <td style="font-size: 11px;" class="trclass">{{metalogro.LogroAlfa}}</td>
+                            <td style="font-size: 11px;" class="trclass">{{metalogro.MetaInicial}}</td>
+                            <td style="font-size: 11px;" class="trclass">{{metalogro.LogroInicial}}</td>
+                            <td style="font-size: 11px;" class="trclass">{{metalogro.MetaIntermedio}} </td>
+                            <td style="font-size: 11px;" class="trclass">{{metalogro.LogroIntermedio}} </td>
+                            <td style="font-size: 11px;" class="trclass">{{metalogro.MetaAvanzado}} </td>
+                            <td style="font-size: 11px;" class="trclass">{{metalogro.LogroAvanzado}} </td>
+                        </tr>
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>TOTAL</th>
+                            <th>{{TAlfas}}</th>
+                            <th>{{TLAlfas}}</th>
+                            <th>{{TInicial}}</th>
+                            <th>{{TLInicial}}</th>
+                            <th>{{TIntermedio}}</th>
+                            <th>{{TLIntermedio}}</th>
+                            <th>{{TLAvanzado}}</th>
+                            <th>{{TAvanzado}}</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
         </div>
     </div>
+
+    <div class="nav-tabs-custom" id="TabTable">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#Alfas" data-toggle="tab">Alfas</a></li>
+            <li><a href="#Inicial" data-toggle="tab">Inicial</a></li>
+            <li><a href="#Intermedio" data-toggle="tab">Intermedio</a></li>
+            <li><a href="#Avanzado" data-toggle="tab">Avanzado</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="active tab-pane animated fast fadeIn" id="Alfas">
+                <!-- <fusioncharts [width]="width" [height]="height" [type]="type" [chartConfig]="chartConfig" [dataSource]="dataSource">
+                </fusioncharts> -->
+                <fusioncharts [chartConfig]=chartConfig [dataSource]=dataSourceAlfa></fusioncharts>
+            </div>
+            <div class="tab-pane animated fast fadeIn" id="Inicial">
+                <fusioncharts [chartConfig]=chartConfig [dataSource]=dataSourceInicial></fusioncharts>
+            </div>
+            <div class="tab-pane animated fast fadeIn" id="Intermedio">
+                <fusioncharts [chartConfig]=chartConfig [dataSource]=dataSourceIntermedio></fusioncharts>
+            </div>
+            <div class="tab-pane animated fast fadeIn" id="Avanzado">
+                <fusioncharts [chartConfig]=chartConfig [dataSource]=dataSourceAvanzado></fusioncharts>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
 </div>

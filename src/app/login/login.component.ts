@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -8,12 +9,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
   accesar() {
-    window.open('dasboard', '_self');
+     window.open('dasboard', '_self');
+    // this.router.navigate(['/dashboard']);
   }
 
 }

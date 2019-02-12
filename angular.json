@@ -53,6 +53,8 @@
                             "src/assets/fileup/js/fileinput.js",
                             "src/assets/fileup/js/locales/es.js",
 
+                            "node_modules/moment/min/moment.min.js",
+
                             "src/assets/login/js/scripts.js",
 
                             "src/assets/login/js/jquery.backstretch.min.js"

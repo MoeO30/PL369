@@ -6,13 +6,13 @@ import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 
-
-
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FilterPipeModule
   ],
   declarations: [
     HeaderComponent,
